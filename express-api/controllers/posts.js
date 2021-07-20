@@ -17,11 +17,12 @@ router.get("/posts", async (req, res) => {
 router.post("/", async (req, res) => {
   try {
     const post = await Post.create(
+      req.body.date,
       req.body.title,
       req.body.pseudonym,
       req.body.body
     );
-    res.json();
+    res.json(post);
   } catch (err) {
     res.status(404).json({ err });
   }

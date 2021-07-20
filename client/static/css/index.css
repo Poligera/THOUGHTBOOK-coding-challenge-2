@@ -47,7 +47,7 @@ h1 {
   z-index: 2;
 }
 
-h4 {
+h3 {
   z-index: 2;
 }
 
@@ -65,7 +65,7 @@ form {
   height: 40%;
   width: 30%;
   z-index: 2;
-  background-color: rgba(247, 222, 191, 0.5);
+  background-color: rgba(247, 221, 191, 0.8);
   padding: 2rem;
   border-radius: 8px;
 }
@@ -82,12 +82,17 @@ textarea {
 #button {
   width: fit-content;
   margin: auto;
-  margin-top: 2rem;
-  padding: 0.2rem 0.5rem;
+  margin-top: 1rem;
+  padding: 0.3rem 0.8rem;
   color: rgb(14, 14, 37);
   font-weight: bold;
-  margin-bottom: 2rem;
-  border-radius: 20px;
+  border-radius: 10px;
+  color: teal;
+  border: none;
+}
+
+#button:hover {
+  border: 2px teal solid;
 }
 
 section {
@@ -104,10 +109,10 @@ section {
 div {
   margin: auto;
   z-index: 2;
-  background-color: rgba(239, 244, 248, 0.829);
+  background-color: rgba(212, 184, 238, 0.8);
   margin: 1rem;
   padding: 1rem;
-  width: 70%;
+  width: 75%;
   contain: content;
   border-radius: 10px;
 }
@@ -128,7 +133,11 @@ p {
   margin: 0.5rem;
 }
 
-p:nth-child(2) {
+p:nth-child(3n + 0) {
   font-style: italic;
   font-size: larger;
+}
+
+div:nth-child(odd) {
+  background-color: rgba(182, 240, 240, 0.8);
 }

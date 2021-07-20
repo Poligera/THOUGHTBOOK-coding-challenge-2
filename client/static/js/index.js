@@ -8,17 +8,12 @@ form.addEventListener("submit", submitPost);
 textarea.addEventListener("input", limitChar);
 window.addEventListener("load", loadPosts);
 
-function limitChar(e) {
-  const target = e.target;
-  const maxLength = target.getAttribute("maxlength");
-  let curLength = target.value.length;
-  charCounter.textContent = `${maxLength - curLength} characters remaining`;
-}
-
+// Create a post:
 function submitPost(e) {
   e.preventDefault();
 
   const postData = {
+    date: today(),
     title: e.target.title.value,
     pseudonym: e.target.pseudonym.value,
     body: e.target.story.value,
@@ -31,10 +26,12 @@ function submitPost(e) {
   };
 
   fetch("http://localhost:3000/", options)
-    .then((r) => r.text())
-    .then(loadPosts())
+    .then((r) => r.json())
+    .then((data) => console.log("Post created, id: " + data.id))
     .then(() => e.target.reset())
     .catch(console.warn);
+
+  window.location.reload();
 }
 
 // Fetching all the posts and sorting them:
@@ -49,7 +46,6 @@ function loadPosts() {
 // Sorting in reverse chronological order:
 function sortPosts(data) {
   const posts = data.posts;
-  console.log(posts);
   const sorted = posts.sort((a, b) => b.id - a.id);
   return sorted;
 }
@@ -61,10 +57,24 @@ function createPosts(data) {
     const postDiv = document.createElement("div");
     const header = document.createElement("p");
     const body = document.createElement("p");
-    header.textContent = `"${post.title}" from ${post.pseudonym}`;
+    header.textContent = `"${post.title}" from ${post.pseudonym} posted on ${post.date}`;
     body.textContent = post.body;
     postDiv.append(header);
     postDiv.append(body);
     postsSection.append(postDiv);
   });
 }
+
+// Character limit feedback:
+function limitChar(e) {
+  const target = e.target;
+  const maxLength = target.getAttribute("maxlength");
+  let curLength = target.value.length;
+  charCounter.textContent = `${maxLength - curLength} characters remaining`;
+}
+
+// Get a date for each post:
+const today = () => {
+  let today = new Date();
+  return `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+};
