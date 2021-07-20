@@ -109,6 +109,7 @@ div {
   padding: 1rem;
   width: 70%;
   contain: content;
+  border-radius: 10px;
 }
 
 #charCounter {

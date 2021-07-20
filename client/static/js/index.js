@@ -3,8 +3,10 @@ const postsSection = document.querySelector("section");
 const textarea = document.querySelector("textarea");
 const charCounter = document.querySelector("#charCounter");
 
+// Event listeners:
 form.addEventListener("submit", submitPost);
 textarea.addEventListener("input", limitChar);
+window.addEventListener("load", loadPosts);
 
 function limitChar(e) {
   const target = e.target;
@@ -15,15 +17,12 @@ function limitChar(e) {
 
 function submitPost(e) {
   e.preventDefault();
-  console.log(e);
 
   const postData = {
     title: e.target.title.value,
     pseudonym: e.target.pseudonym.value,
     body: e.target.story.value,
   };
-
-  console.log(postData);
 
   const options = {
     method: "POST",
@@ -38,17 +37,25 @@ function submitPost(e) {
     .catch(console.warn);
 }
 
-window.onload = loadPosts();
-
+// Fetching all the posts and sorting them:
 function loadPosts() {
   fetch("http://localhost:3000/posts")
     .then((r) => r.json())
-    .then((data) => createPost(data.posts))
+    .then((postData) => sortPosts(postData))
+    .then((sortedData) => createPosts(sortedData))
     .catch(console.warn);
 }
 
-function createPost(data) {
-  console.log(data);
+// Sorting in reverse chronological order:
+function sortPosts(data) {
+  const posts = data.posts;
+  console.log(posts);
+  const sorted = posts.sort((a, b) => b.id - a.id);
+  return sorted;
+}
+
+// Creating a div for every post from the db:
+function createPosts(data) {
   postsSection.textContent = "";
   data.forEach((post) => {
     const postDiv = document.createElement("div");
