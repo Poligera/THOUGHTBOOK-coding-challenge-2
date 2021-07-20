@@ -23,12 +23,12 @@ class Post {
   static create(title, pseudonym, body) {
     return new Promise(async (resolve, reject) => {
       try {
-        let postData = await db.query(
-          `INSERT INTO posts (title, pseudonym, body) VALUES ($1, $2, $3) RETURNING *;`,
+        await db.query(
+          `INSERT INTO posts (title, pseudonym, body) VALUES ($1, $2, $3);`,
           [title, pseudonym, body]
         );
-        let newPost = new Post(postData.rows[0]);
-        resolve(newPost);
+        let updatedPosts = Post.all;
+        resolve(updatedPosts);
       } catch (err) {
         reject("Error creating post!");
       }

@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
       req.body.pseudonym,
       req.body.body
     );
-    res.json(post);
+    res.json();
   } catch (err) {
     res.status(404).json({ err });
   }
