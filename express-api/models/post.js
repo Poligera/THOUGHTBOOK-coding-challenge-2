@@ -1,23 +1,36 @@
 const db = require("../db_config/config");
-const SQL = require("sql-template-strings");
 
 class Post {
   constructor(data) {
+    this.id = data.id;
+    this.title = data.title;
+    this.pseudonym = data.pseudonym;
     this.body = data.body;
-    this.username = data.username;
   }
 
   static get all() {
     return new Promise(async (resolve, reject) => {
       try {
-        let result =
-          await db.run(SQL`SELECT posts. *, users.username as username
-                                                    FROM posts 
-                                                    JOIN users ON posts.user_id = users.id;`);
+        let result = await db.query(`SELECT * FROM posts;`);
         let posts = result.rows.map((r) => new Post(r));
         resolve(posts);
       } catch (err) {
         reject(`Error retrieving posts: ${err}`);
+      }
+    });
+  }
+
+  static create(title, pseudonym, body) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        let postData = await db.query(
+          `INSERT INTO posts (title, pseudonym, body) VALUES ($1, $2, $3) RETURNING *;`,
+          [title, pseudonym, body]
+        );
+        let newPost = new Post(postData.rows[0]);
+        resolve(newPost);
+      } catch (err) {
+        reject("Error creating post!");
       }
     });
   }
