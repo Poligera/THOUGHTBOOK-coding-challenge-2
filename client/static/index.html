@@ -23,7 +23,7 @@
     <div id="bg-image"></div>
     <header>
       <h1>THOUGHTBOOK</h1>
-      <h5>Where your stories live...</h5>
+      <h4>Where your stories live...</h4>
     </header>
     <main>
       <article id="form">
@@ -32,8 +32,9 @@
             type="text"
             id="title"
             name="title"
-            placeholder="Title"
+            placeholder="Story Title"
             onclick="this.placeholder=''"
+            onblur="this.placeholder='Story Title'"
             required
           />
           <input
@@ -42,15 +43,19 @@
             name="pseudonym"
             placeholder="Pseudonym"
             onclick="this.placeholder=''"
+            onblur="this.placeholder='Pseudonim'"
             required
           />
+          <div id="charCounter">300 characters remaining</div>
           <textarea
             name="story"
             id="story"
             rows="10"
             cols="40"
-            placeholder="Your story..."
+            maxlength="300"
+            placeholder="Your Story..."
             onclick="this.placeholder=''"
+            onblur="this.placeholder='Your Story...'"
             required
           ></textarea>
           <input type="submit" id="button" value="PUBLISH" />

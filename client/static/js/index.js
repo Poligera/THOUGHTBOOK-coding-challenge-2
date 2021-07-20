@@ -1,8 +1,17 @@
 const form = document.querySelector("form");
-console.log(form);
 const postsSection = document.querySelector("section");
+const textarea = document.querySelector("textarea");
+const charCounter = document.querySelector("#charCounter");
 
 form.addEventListener("submit", submitPost);
+textarea.addEventListener("input", limitChar);
+
+function limitChar(e) {
+  const target = e.target;
+  const maxLength = target.getAttribute("maxlength");
+  let curLength = target.value.length;
+  charCounter.textContent = `${maxLength - curLength} characters remaining`;
+}
 
 function submitPost(e) {
   e.preventDefault();
@@ -23,7 +32,7 @@ function submitPost(e) {
   };
 
   fetch("http://localhost:3000/", options)
-    .then((r) => r.json())
+    .then((r) => r.text())
     .then(loadPosts())
     .then(() => e.target.reset())
     .catch(console.warn);
@@ -34,22 +43,20 @@ window.onload = loadPosts();
 function loadPosts() {
   fetch("http://localhost:3000/posts")
     .then((r) => r.json())
-    .then((posts) => createPost(posts))
+    .then((data) => createPost(data.posts))
     .catch(console.warn);
 }
 
 function createPost(data) {
+  console.log(data);
   postsSection.textContent = "";
   data.forEach((post) => {
     const postDiv = document.createElement("div");
-    const title = document.createElement("p");
-    const pseudonym = document.createElement("p");
+    const header = document.createElement("p");
     const body = document.createElement("p");
-    title.textContent = `Title:\n${post.title}`;
-    pseudonym.textContent = `Pseudonym:\n${post.pseudonym}`;
-    body.textContent = `Message:\n${post.body}`;
-    postDiv.append(title);
-    postDiv.append(pseudonym);
+    header.textContent = `"${post.title}" from ${post.pseudonym}`;
+    body.textContent = post.body;
+    postDiv.append(header);
     postDiv.append(body);
     postsSection.append(postDiv);
   });
