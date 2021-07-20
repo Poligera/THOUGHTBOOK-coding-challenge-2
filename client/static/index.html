@@ -28,14 +28,27 @@
     <main>
       <article id="form">
         <form action="submit">
-          <input type="text" id="title" placeholder="Title" />
-          <input type="text" id="pseudonym" placeholder="Pseudonym" />
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Title"
+            onclick="this.placeholder=''"
+          />
+          <input
+            type="text"
+            id="pseudonym"
+            name="pseudonym"
+            placeholder="Pseudonym"
+            onclick="this.placeholder=''"
+          />
           <textarea
             name="story"
             id="story"
             rows="10"
             cols="40"
             placeholder="Your story..."
+            onclick="this.placeholder=''"
           ></textarea>
           <input type="button" id="button" value="PUBLISH" />
         </form>
