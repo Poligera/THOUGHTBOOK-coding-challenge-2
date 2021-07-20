@@ -39,6 +39,7 @@ function loadPosts() {
 }
 
 function createPost(data) {
+  postsSection.textContent = "";
   data.forEach((post) => {
     const postDiv = document.createElement("div");
     const title = document.createElement("p");
