@@ -1,12 +1,18 @@
 # Thoughtbook
 
+## Purpose of the App:
+
+Welcome to the webapp created by Polina and Akash. This is a one-page website which will allow for users to publish their own thoughts with the Title, Pseudonym and Thought (main body of content). Users will be able to view their published thoughts underneath the submit form and are limited to 300 characters. Enjoy!
+
 ## Technologies:
 
 - Docker
 - Express
 - Node
 - http-server
-- html,css and js
+- HTML, CSS and JS
+- PostgreSQL
+- Nodemon
 
 ## Installation and Usage:
 
@@ -31,7 +37,7 @@
 
 - Some of the challenges faced were when trying to run `docker-compose up` there was already a container from a previous project running on the port we designated to the server API.
 - The post route was not working becasuse the type in the publish button was set to `type = 'button'` instead of `type='submit'`.
-- Indenting issues on the docker compose yaml file was casuing problems when running the `docker-compose up`.
+- Indenting issues on the docker compose yaml file was causing problems when running the `docker-compose up`.
 - `docker-compose down--remove-orphans` was not closing all the containers and removing them, so we had to do it manually with `docker stop <insert_id_of_container>`
 
 ## Wins:
@@ -40,3 +46,15 @@
 - Implementing features which order the the posts in order of most recent.
 - Styling, we created div elements which contained the posts.
 - Created functions will create the html elements that we can put the posts from users in.
+- Separating the code into different files to help with organisation and tidiness.
+- Adding nth-child to css which allowed for us to change the colors of the alternating posts.
+- Setting up `docker-compose.yaml` correctly.
+- Linking the database with the server so the data gets shown on the client side code.
+- GET and POST routes functioning in the way we intended.
+
+## Future features:
+
+- Would like to add more media queries to make the website more responsive.
+- Add a dynamic carrousel of posts such that you can see random ones in another section of the page.
+- Add a like/dislike and comment feature.
+- Add animations, to make the website more user friendly.
