@@ -3,6 +3,7 @@ const db = require("../db_config/config");
 class Post {
   constructor(data) {
     this.id = data.id;
+    this.date = data.date;
     this.title = data.title;
     this.pseudonym = data.pseudonym;
     this.body = data.body;
@@ -11,7 +12,7 @@ class Post {
   static get all() {
     return new Promise(async (resolve, reject) => {
       try {
-        let result = await db.query(`SELECT * FROM posts;`);
+        let result = await db.query(`SELECT * FROM posts ORDER BY id DESC;`);
         let posts = result.rows.map((r) => new Post(r));
         resolve(posts);
       } catch (err) {
@@ -20,15 +21,15 @@ class Post {
     });
   }
 
-  static create(title, pseudonym, body) {
+  static create(date, title, pseudonym, body) {
     return new Promise(async (resolve, reject) => {
       try {
-        await db.query(
-          `INSERT INTO posts (title, pseudonym, body) VALUES ($1, $2, $3);`,
-          [title, pseudonym, body]
+        const newPostData = await db.query(
+          `INSERT INTO posts (date, title, pseudonym, body) VALUES ($1, $2, $3, $4) RETURNING *;`,
+          [date, title, pseudonym, body]
         );
-        let updatedPosts = Post.all;
-        resolve(updatedPosts);
+        const newPost = new Post(newPostData.rows[0]);
+        resolve(newPost);
       } catch (err) {
         reject("Error creating post!");
       }

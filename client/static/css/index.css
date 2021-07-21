@@ -3,10 +3,8 @@
   padding: 0;
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-}
-
-main {
-  z-index: 2;
+  display: flex;
+  flex-direction: column;
 }
 
 #bg-image {
@@ -15,7 +13,7 @@ main {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  /* filter: blur(3px); */
+  filter: blur(2px);
   position: fixed;
   top: -2rem;
   bottom: -2rem;
@@ -35,6 +33,9 @@ header {
   align-items: center;
   color: rgb(252, 248, 243);
   font-style: italic;
+  position: sticky;
+  top: 0;
+  z-index: 3;
 }
 
 h1 {
@@ -47,7 +48,7 @@ h1 {
   z-index: 2;
 }
 
-h4 {
+h3 {
   z-index: 2;
 }
 
@@ -65,29 +66,43 @@ form {
   height: 40%;
   width: 30%;
   z-index: 2;
-  background-color: rgba(247, 222, 191, 0.5);
+  background-color: rgba(247, 221, 191, 0.8);
   padding: 2rem;
   border-radius: 8px;
 }
 
 form input {
   height: 1.5rem;
+}
+
+input,
+textarea {
   color: black;
 }
 
-textarea {
-  color: black;
+input:active {
+  background-color: bisque;
+}
+
+textarea:active {
+  background-color: bisque;
 }
 
 #button {
   width: fit-content;
   margin: auto;
-  margin-top: 2rem;
-  padding: 0.2rem 0.5rem;
+  margin-top: 1rem;
+  padding: 0.3rem 0.8rem;
   color: rgb(14, 14, 37);
   font-weight: bold;
-  margin-bottom: 2rem;
-  border-radius: 20px;
+  border-radius: 10px;
+  color: teal;
+  border: none;
+}
+
+#button:hover {
+  border: 2px teal solid;
+  cursor: pointer;
 }
 
 section {
@@ -104,11 +119,10 @@ section {
 div {
   margin: auto;
   z-index: 2;
-  background-color: rgba(239, 244, 248, 0.829);
+  background-color: rgba(212, 184, 238, 0.8);
   margin: 1rem;
   padding: 1rem;
   width: 70%;
-  contain: content;
   border-radius: 10px;
 }
 
@@ -131,4 +145,8 @@ p {
 p:nth-child(2) {
   font-style: italic;
   font-size: larger;
+}
+
+div:nth-child(odd) {
+  background-color: rgba(182, 240, 240, 0.8);
 }
