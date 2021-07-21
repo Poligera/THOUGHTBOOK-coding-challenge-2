@@ -33,9 +33,9 @@ header {
   align-items: center;
   color: rgb(252, 248, 243);
   font-style: italic;
-  position: sticky;
-  top: 0;
-  z-index: 3;
+  /* position: sticky;
+  top: 0; */
+  z-index: 2;
 }
 
 h1 {
@@ -150,3 +150,12 @@ p:nth-child(2) {
 div:nth-child(odd) {
   background-color: rgba(182, 240, 240, 0.8);
 }
+
+@media screen and (max-width: 575px) {
+  #button {
+    background-color: yellow;
+  }
+}
+@media only screen and (max-width: ) {
+}
+@media only screen and (min-device-width: 320px) and (max-device-height: 812px) and (-webkit-min-device-pixel-ratio: 2);
