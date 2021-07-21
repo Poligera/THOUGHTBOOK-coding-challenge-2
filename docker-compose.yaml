@@ -1,18 +1,17 @@
-version: '3'
+version: "3"
 services:
   api:
-    image: 'node:latest'
+    image: "node:latest"
     working_dir: /server
     ports:
       - 3000:3000
-    environment: 
-      - PORT=3000
+    environment:
       - PGUSER=polina
       - PGHOST=db
       - PGPASSWORD=thoughtbook_password
       - PGDATABASE=thoughtbook
       - PGPORT=5432
-    depends_on: 
+    depends_on:
       - db
     volumes:
       - type: bind
@@ -20,15 +19,15 @@ services:
         target: /server
     command: bash -c "npm install && npm start"
   db:
-    image: 'postgres:latest'
+    image: "postgres:latest"
     expose:
       - "5432"
     volumes:
       - "dbdata:/var/lib/postgresql/data"
       - "./db/setup/:/docker-entrypoint-initdb.d/:ro"
-    environment: 
+    environment:
       - POSTGRES_DB=thoughtbook
       - POSTGRES_USER=polina
       - POSTGRES_PASSWORD=thoughtbook_password
-    volumes:
-        dbdata:
+volumes:
+  dbdata:

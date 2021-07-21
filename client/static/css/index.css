@@ -2,43 +2,51 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  color: antiquewhite;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
 #bg-image {
   background-image: url("../images/zoltan-tasi-vHnVtLK8rCc-unsplash.jpg");
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  /* filter: blur(3px); */
-  position: absolute;
-  height: 100%;
-  width: 100%;
+  filter: blur(2px);
+  position: fixed;
+  top: -2rem;
+  bottom: -2rem;
+  right: -2rem;
+  left: -2rem;
+  width: 100vw;
 }
 
 header {
-  height: 20vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  height: 25vh;
   margin: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: antiquewhite;
+  color: rgb(252, 248, 243);
+  font-style: italic;
+  z-index: 2;
 }
 
 h1 {
   margin: auto;
   font-family: "Zen Tokyo Zoo", cursive;
-  font-style: italic;
   font-size: 3rem;
   padding: 1.5rem;
-  border: antiquewhite 2px solid;
+  border: rgb(245, 243, 241) 5px double;
   border-radius: 25px;
   z-index: 2;
 }
 
-h5 {
+h3 {
   z-index: 2;
 }
 
@@ -54,26 +62,175 @@ form {
   flex-direction: column;
   margin-top: 1rem;
   height: 40%;
+  width: 30%;
   z-index: 2;
-  background-color: rgba(247, 222, 191, 0.5);
+  background-color: rgba(247, 221, 191, 0.8);
   padding: 2rem;
   border-radius: 8px;
 }
 
 form input {
-  margin-bottom: 6rem;
   height: 1.5rem;
-  margin: auto;
-  width: 10vw;
+}
+
+input,
+textarea {
+  color: black;
+}
+
+input:active {
+  background-color: bisque;
+}
+
+textarea:active {
+  background-color: bisque;
 }
 
 #button {
   width: fit-content;
   margin: auto;
-  margin-top: 2rem;
-  padding: 0.2rem 0.5rem;
+  margin-top: 1rem;
+  padding: 0.3rem 0.8rem;
   color: rgb(14, 14, 37);
   font-weight: bold;
-  margin-bottom: 2rem;
-  border-radius: 20px;
+  border-radius: 10px;
+  color: teal;
+  border: none;
 }
+
+#button:hover {
+  border: 2px teal solid;
+  cursor: pointer;
+}
+
+section {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
+  margin: auto;
+}
+
+div {
+  margin: auto;
+  z-index: 2;
+  background-color: rgba(212, 184, 238, 0.8);
+  margin: 1rem;
+  padding: 1rem;
+  width: 50%;
+  border-radius: 10px;
+}
+
+#charCounter {
+  background-color: initial;
+  height: 1rem;
+  font-size: 0.8rem;
+  text-align: right;
+  font-style: italic;
+  width: initial;
+  margin: initial;
+}
+
+p {
+  z-index: 2;
+  word-wrap: break-word;
+  margin: 0.5rem;
+}
+
+p:nth-child(2) {
+  font-style: italic;
+  font-size: larger;
+}
+
+div:nth-child(odd) {
+  background-color: rgba(182, 240, 240, 0.8);
+}
+
+/* Portrait only media queries:*/
+
+@media only screen and (min-device-width: 320px) and (max-device-height: 812px) and (-webkit-min-device-pixel-ratio: 2) {
+  title {
+    display: none;
+  }
+
+  body {
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+  header {
+    margin-top: 1rem;
+    height: 7vh;
+    color: rgb(9, 189, 189);
+  }
+
+  h1 {
+    font-size: 1rem;
+    padding: 1rem;
+    border-color: rgb(9, 189, 189);
+  }
+
+  h3 {
+    font-size: 0.7rem;
+  }
+
+  form {
+    width: 80%;
+    height: 20%;
+    padding: 1rem;
+  }
+
+  div {
+    width: 95%;
+    font-size: smaller;
+  }
+
+  #bg-image {
+    display: none;
+  }
+}
+
+/* Landscape only */
+@media only screen and (min-device-width: 640px) and (max-device-width: 823px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+  script {
+    display: none;
+  }
+
+  header {
+    height: 5vh;
+    color: rgb(9, 189, 189);
+    margin: auto;
+    margin-top: 1rem;
+  }
+
+  h1 {
+    font-size: 1rem;
+    padding: 1rem;
+    border-color: rgb(9, 189, 189);
+  }
+
+  h3 {
+    font-size: 0.7rem;
+  }
+
+  article {
+    width: 100%;
+  }
+
+  form {
+    width: 70%;
+    height: 25%;
+    padding: 1rem;
+  }
+
+  div {
+    width: 80%;
+    font-size: smaller;
+  }
+
+  #bg-image {
+    display: none;
+  }
+} ;

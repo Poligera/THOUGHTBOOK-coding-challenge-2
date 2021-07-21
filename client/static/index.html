@@ -17,24 +17,51 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/index.css" />
+    <script defer src="./js/index.js"></script>
   </head>
   <body id="welcome">
     <div id="bg-image"></div>
     <header>
       <h1>THOUGHTBOOK</h1>
-      <h5>Where your stories live...</h5>
+      <h3>Where your stories live...</h3>
     </header>
     <main>
       <article id="form">
         <form action="submit">
-          <input type="text" id="title" placeholder="Title" />
-          <input type="text" id="pseudonym" placeholder="Pseudonym" />
-          <textarea name="story" id="story" rows="10" cols="40">
-Your story....</textarea
-          >
-          <input type="button" id="button" value="PUBLISH" />
+          <input
+            type="text"
+            id="title"
+            name="title"
+            placeholder="Story Title"
+            onclick="this.placeholder=''"
+            onblur="this.placeholder='Story Title'"
+            required
+          />
+          <input
+            type="text"
+            id="pseudonym"
+            name="pseudonym"
+            placeholder="Pseudonym"
+            onclick="this.placeholder=''"
+            onblur="this.placeholder='Pseudonim'"
+            required
+          />
+          <div id="charCounter">300 characters remaining</div>
+          <textarea
+            name="story"
+            id="story"
+            rows="10"
+            cols="40"
+            maxlength="300"
+            placeholder="Your Story..."
+            onclick="this.placeholder=''"
+            onblur="this.placeholder='Your Story...'"
+            required
+          ></textarea>
+          <input type="submit" id="button" value="PUBLISH" />
         </form>
       </article>
+      <section></section>
     </main>
   </body>
 </html>
