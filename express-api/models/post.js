@@ -12,7 +12,7 @@ class Post {
   static get all() {
     return new Promise(async (resolve, reject) => {
       try {
-        let result = await db.query(`SELECT * FROM posts;`);
+        let result = await db.query(`SELECT * FROM posts ORDER BY id DESC;`);
         let posts = result.rows.map((r) => new Post(r));
         resolve(posts);
       } catch (err) {

@@ -4,10 +4,10 @@ const router = express.Router();
 const Post = require("../models/post");
 
 // Post index route:
-router.get("/posts", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const posts = await Post.all;
-    res.json({ posts });
+    res.json(posts);
   } catch (err) {
     res.status(500).json({ err });
   }
@@ -24,7 +24,7 @@ router.post("/", async (req, res) => {
     );
     res.json(post);
   } catch (err) {
-    res.status(404).json({ err });
+    res.status(500).json({ err });
   }
 });
 

@@ -1,3 +1,4 @@
+// DOM elements:
 const form = document.querySelector("form");
 const postsSection = document.querySelector("section");
 const textarea = document.querySelector("textarea");
@@ -36,22 +37,16 @@ function submitPost(e) {
 
 // Fetching all the posts and sorting them:
 function loadPosts() {
-  fetch("http://localhost:3000/posts")
+  fetch("http://localhost:3000/")
     .then((r) => r.json())
-    .then((postData) => sortPosts(postData))
-    .then((sortedData) => createPosts(sortedData))
+    // .then((postData) => sortPosts(postData))
+    .then((data) => displayPosts(data))
     .catch(console.warn);
 }
 
-// Sorting in reverse chronological order:
-function sortPosts(data) {
-  const posts = data.posts;
-  const sorted = posts.sort((a, b) => b.id - a.id);
-  return sorted;
-}
-
 // Creating a div for every post from the db:
-function createPosts(data) {
+function displayPosts(data) {
+  console.log(data);
   postsSection.textContent = "";
   data.forEach((post) => {
     const postDiv = document.createElement("div");
