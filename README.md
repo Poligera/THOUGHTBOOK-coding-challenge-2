@@ -1,8 +1,9 @@
-# Thoughtbook
+# THOUGHTBOOK
+###(23-hour coding challenge)
 
 ## Purpose of the App:
 
-Welcome to the webapp created by Polina and Akash. This is a one-page website which will allow for users to publish their own thoughts with the Title, Pseudonym and Thought (main body of content). Users will be able to view their published thoughts underneath the submit form and are limited to 300 characters. Enjoy!
+Welcome to the web app created by Polina and Akash. This is a one-page website which will allow for users to publish their own thoughts with the Title, Pseudonym and Thought (main body of content). Users will be able to view their published thoughts underneath the submit form and are limited to 300 characters. Enjoy!
 
 ## Technologies:
 
